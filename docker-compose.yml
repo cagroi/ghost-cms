@@ -16,7 +16,7 @@ services:
             - db
         build: ./DockerFile
         ports:
-            - "2365:80"
+            - "2368:2368"
         restart: always
         environment:
             NODE_ENV: production
