@@ -1,6 +1,6 @@
 version: '3'
 services:
-    db:
+    mysql:
         image: mysql:5.7
         volumes:
             - db_data:/var/lib/mysql
@@ -13,14 +13,14 @@ services:
 
     ghost:
         depends_on:
-            - db
-        build: ./DockerFile
+            - mysql
+        build: ./
         ports:
             - "2368:2368"
         restart: always
         environment:
             NODE_ENV: production
-            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_HOST: mysql:3306
             WORDPRESS_DB_USER: ghostuser
             WORDPRESS_DB_PASSWORD: ocrpassword
             WORDPRESS_DB_NAME: ghost
